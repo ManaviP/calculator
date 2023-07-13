@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Calculator</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 20px;
+    }
+
+    h1 {
+        text-align: center;
+        color: #333;
+    }
+
+    .calculator {
+        max-width: 300px;
+        margin: 0 auto;
+        background-color: #fff;
+        border-radius: 5px;
+        padding: 20px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    label {
+        display: block;
+        margin-bottom: 10px;
+        color: #555;
+    }
+
+    input[type="number"],
+    select {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+    }
+
+    button {
+        display: block;
+        width: 100%;
+        padding: 10px;
+        margin-top: 10px;
+        background-color: #4caf50;
+        color: #fff;
+        border: none;
+        border-radius: 3px;
+        cursor: pointer;
+    }
+
+    #res {
+        width: 100%;
+        padding: 10px;
+        margin-top: 10px;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+        background-color: #f9f9f9;
+    }
+</style>
+</head>
+<body>
+<div class="calculator">
+    <h1>Calculator</h1>
+    <label for="first">First Number:</label>
+    <input type="number" name="first" id="first" step="any" />
+
+    <label for="ope">Operation:</label>
+    <select id="ope">
+        <option value="+">+</option>
+        <option value="-">-</option>
+        <option value="*">*</option>
+        <option value="/">/</option>
+    </select>
+
+    <label for="second">Second Number:</label>
+    <input type="number" name="second" id="second" step="any" />
+
+    <button onclick="cal()">Calculate</button>
+    <input type="text" name="" id="res" readonly />
+    
+    <button onclick="clearInput()">Clear</button>
+</div>
+
+<script type="text/javascript">
+    function cal() {
+        var opr1 = document.getElementById('first').value;
+        var opr2 = document.getElementById('second').value;
+        var ope = document.getElementById('ope').value;
+        var res = 0;
+        
+        if (ope === '+') {
+            res = parseFloat(opr1) + parseFloat(opr2);
+        }
+        if (ope === '-') {
+            res = parseFloat(opr1) - parseFloat(opr2);
+        }
+        if (ope === '*') {
+            res = parseFloat(opr1) * parseFloat(opr2);
+        }
+        if (ope === '/') {
+            res = parseFloat(opr1) / parseFloat(opr2);
+        }
+        document.getElementById('res').value = res;
+    }
+    
+    function clearInput() {
+        document.getElementById('first').value = '';
+        document.getElementById('second').value = '';
+        document.getElementById('ope').selectedIndex = 0;
+        document.getElementById('res').value = '';
+    }
+</script>
+</body>
+</html>
